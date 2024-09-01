@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="header">
+        <form action="/search" method="GET" class="search-form">
+            <input type="text" id="search" name="query" placeholder="Search..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <h1 class="page-title">Book Notes</h1>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <% if (locals.error)
+            { %>
+               <p class="error"> credentials are wrong please try again or create user if does not e</p>
+           <% } %>
+            <button type="submit">Login</button>
+        </form>
+        <form action="/CreateUser" method="GET">
+            <button type="submit" class="create-button">Create User</button>
+        </form>
+        </div>
+
+</body>
+</html>

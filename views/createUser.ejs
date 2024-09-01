@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="header">
+        <form action="/search" method="GET" class="search-form">
+            <input type="text" id="search" name="query" placeholder="Search..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="create-user-container">
+        <h2>Create User</h2>
+        <form action="/CreateUser" method="POST">
+            <label for="new-username">Username:</label>
+            <input type="text" id="new-username" name="username" required>
+            
+            <label for="new-password">Password:</label>
+            <input type="password" id="new-password" name="password" required>
+            <% if (locals.error)
+            { %>
+               <p class="error"> <%=error%></p>
+           <% } %>
+            <button type="submit">Create User</button>
+        </form>
+        <form action="/" method="GET">
+            <button type="submit" class="create-button">Log In</button>
+        </form>    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed</title>
+    <link rel="stylesheet" href="main.css"> 
+</head>
+<body>
+    <header class="header">
+        <form class="search-form" action="/search" method="get">
+            <input type="text" name="query" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+    </header>
+    <main class="feed-container">
+        <h2 class="username"><%= username %> book notes!</h2>
+        <div class="cards-container">
+            <% posts.forEach(post => { %>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title"><%= post.title %></h3>
+                        <img src="<%= post.picture %>" alt="<%= post.title %>" class="card-image">
+                        <p class="card-rating">Rating: <%= post.rating %></p>
+                        <p class="card-date"><%= new Date(post.date).toLocaleDateString() %></p>
+                        <p class="card-description"><%= post.description %></p>
+                    </div>
+                </div>
+            <% }) %>
+        </div> 
+    </main>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Feed</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Edit Feed</h1>
+        <form class="search-form" action="/search" method="get">
+            <input type="text" name="query" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+        <a href="manageFeed.ejs" class="create-button">Back to Feed</a>
+    </header>
+    <main class="edit-container">
+        <h2>Edit Card</h2>
+        <form action="/update-card/<%= card.id %>" method="post">
+            <div class="form-group">
+                <label for="title">Card Title</label>
+                <input type="text" id="title" name="title" value="<%= card.title %>" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" value="<%= new Date(card.date).toISOString().split('T')[0] %>" required>
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <input type="number" id="rating" name="rating" value="<%= card.rating %>" min="1" max="100" required>
+            </div>
+            <button type="submit" class="submit-button">Update Card</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,12 @@
+CREATE TABLE users (
+id SERIAL PRIMARY KEY,
+username  VARCHAR(50) UNIQUE NOT NULL,
+password VARCHAR(50)
+);
+CREATE TABLE BookNotes(
+id SERIAL PRIMARY KEY,
+BookTitle TEXT NOT NULL,
+UserId INT REFERENCES users(id),
+paragraph TEXT,
+date TIMESTAMP
+);
