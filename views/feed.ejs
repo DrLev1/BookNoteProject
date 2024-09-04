@@ -4,7 +4,285 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feed</title>
-    <link rel="stylesheet" href="main.css"> 
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #EEF0E5; /* Light background */
+    margin: 0;
+    padding: 0;
+}
+.error{
+    color: #ff0000; 
+    font-weight: 600;
+
+}
+.header {
+    background-color: #163020; /* Dark green header */
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column; /* Stack search form and title vertically */
+    align-items: center;
+}
+.page-title {
+    text-align: center;
+    color: #304D30; /* Green color for title */
+    margin: 20px 0; /* Spacing around the title */
+    font-size: 100px;
+}
+.header h1 {
+    color: #FFFFFF; /* White text for header title */
+    margin-bottom: 10px; /* Space between title and search form */
+}
+
+.search-form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 10px; /* Space between search form and title */
+}
+
+.search-form input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #B6C4B6; /* Light green border */
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    height: 42px;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    background-color: #304D30; /* Dark green button */
+    color: #ffffff;
+    border: 1px solid #304D30;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+    height: 42px;
+    box-sizing: border-box;
+}
+
+.search-form button:hover {
+    background-color: #163020; /* Darker green on hover */
+}
+
+.login-container, .create-user-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    margin: 50px auto;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #163020; /* Dark green text */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #333333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #304D30; /* Dark green button */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: #163020; /* Darker green on hover */
+}
+
+p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333333;
+}
+
+a {
+    color: #163020; /* Dark green links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column; /* Aligns items vertically in a column */
+    overflow-x: auto;
+    gap: 20px;
+    align-items: center; /* Centers items horizontally within the container */
+    justify-content: center; /* Centers items vertically within the container */
+}
+
+.card {
+    background-color: #FFFFFF; /* White background for cards */
+    border: 1px solid #B6C4B6; /* Light green border */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 24px;
+    color: #163020; /* Dark green title */
+    margin-bottom: 10px;
+}
+
+.card-rating {
+    color: #304D30; /* Dark green rating */
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.card-date {
+    color: #163020; /* Dark green date */
+    margin-bottom: 10px;
+}
+
+.card-description {
+    color: #333333; /* Dark gray description */
+    font-size: 18px;
+}
+
+.feed-container {
+    overflow-y: auto; 
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.username {
+    color: #163020; /* Dark green text */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.create-button {
+    padding: 10px 20px;
+    background-color: #304D30; /* Dark green button */
+    color: #ffffff;
+    border: 1px solid #304D30;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    height: 42px;
+    box-sizing: border-box;
+    margin-top: 10px; /* Space between search form and create button */
+    display: inline-block; /* Align with search form */
+}
+
+.create-button:hover {
+    background-color: #163020; /* Darker green on hover */
+}
+
+.edit-button {
+    padding: 5px 10px;
+    background-color: #B6C4B6; /* Light green button */
+    color: #163020; /* Dark green text */
+    border: 1px solid #B6C4B6;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    box-sizing: border-box;
+    height: 35px; /* Adjust button height */
+}
+
+.edit-button:hover {
+    background-color: #304D30; /* Dark green on hover */
+}
+
+#manage-feed-headline {
+    color: #FFFFFF; /* White text */
+}
+.edit-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #EEF0E5; /* Light background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-container h2 {
+    color: #163020; /* Dark green text */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #163020; /* Dark green label */
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #B6C4B6; /* Light green border */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #304D30; /* Dark green button */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 16px;
+    height: 42px;
+}
+
+.submit-button:hover {
+    background-color: #163020; /* Darker green on hover */
+}
+</style> 
 </head>
 <body>
     <header class="header">
@@ -12,18 +290,29 @@
             <input type="text" name="query" placeholder="Search...">
             <button type="submit">Search</button>
         </form>
+        <% if (locals.id){%>
+        <form action="/<%=id%>" method="get">
+            <button type="submit" class="create-button">My Page</button> <!-- Edit button as a form submit button -->
+        </form>
+        <% }else{%>
+            <form action="/" method="get">
+                <button type="submit" class="create-button">Log In</button> <!-- Edit button as a form submit button -->
+            </form>
+        <%}%>
     </header>
     <main class="feed-container">
-        <h2 class="username"><%= username %> book notes!</h2>
         <div class="cards-container">
             <% posts.forEach(post => { %>
                 <div class="card">
                     <div class="card-content">
-                        <h3 class="card-title"><%= post.title %></h3>
-                        <img src="<%= post.picture %>" alt="<%= post.title %>" class="card-image">
+                        <p class="card-title"><%=post.username%></p>
+                        <h3 class="card-title"><%= post.booktitle %></h3>
+                        <%if (post.picurl!=-1){%>
+                        <img src="<%= post.picurl %>" alt="<%= post.booktitle %>" class="card-image">
+                        <%}%>
                         <p class="card-rating">Rating: <%= post.rating %></p>
+                        <p class="card-description"><%= post.paragraph %></p>
                         <p class="card-date"><%= new Date(post.date).toLocaleDateString() %></p>
-                        <p class="card-description"><%= post.description %></p>
                     </div>
                 </div>
             <% }) %>
