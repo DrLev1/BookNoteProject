@@ -50,7 +50,7 @@ async function GetFeed(id){
 }
 
 async function GetBookCover(bookTitle) {//function to get the cover of a book acording to its name
-    const apiKey = 'AIzaSyBsfctT3Q3S3QZL46GVDruVkVF50N6vnGg';
+    const apiKey = 'fuck yop';
     const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(bookTitle)}&key=${apiKey}`;
     
     try {
